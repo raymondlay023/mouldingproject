@@ -1,8 +1,8 @@
 <x-app-layout>
 <!-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.9.6/dist/cdn.min.js" defer></script> -->
 
-<h1>Index TKDN</h1>
-<h1>Button untuk tambah header</h1>
+<h1 class="text-3xl font-bold mb-6">Index TKDN</h1>
+
 
 @if (session('success'))
     <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)" class="bg-green-500 text-white px-4 py-2 rounded mt-4">
@@ -95,35 +95,37 @@
 
 
 @if ($datas->isEmpty())
-    <p>No headers created.</p>
+    <p class="text-gray-700 text-lg font-semibold mt-4">No headers created.</p>
 @else
-    <table class="table-auto w-full">
-        <thead>
-            <tr>
-                <th class="px-4 py-2">ID</th>
-                <th class="px-4 py-2">Penyedia Barang</th>
-                <th class="px-4 py-2">Alamat </th>
-                <th class="px-4 py-2">Product Name</th>
-                <th class="px-4 py-2">Product Type</th>
-                <th class="px-4 py-2">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($datas as $data)
-                <tr>
-                    <td class="border px-4 py-2">{{ $data->id }}</td>
-                    <td class="border px-4 py-2">{{ $data->penyedia_barang }}</td>
-                    <td class="border px-4 py-2">{{ $data->alamat }}</td>
-                    <td class="border px-4 py-2">{{ $data->product_name }}</td>
-                    <td class="border px-4 py-2">{{ $data->product_type }}</td>
-                    <td class="border px-4 py-2">
-                        <!-- Button to redirect to another view passing header ID -->
-                        <a href="{{ route('header.show', $data->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Details</a>
-                    </td>
+    <div class="mt-6">
+        <table class="table-auto w-full bg-white rounded-lg shadow-lg">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="px-4 py-2 text-left text-gray-700 font-medium">ID</th>
+                    <th class="px-4 py-2 text-left text-gray-700 font-medium">Penyedia Barang</th>
+                    <th class="px-4 py-2 text-left text-gray-700 font-medium">Alamat</th>
+                    <th class="px-4 py-2 text-left text-gray-700 font-medium">Product Name</th>
+                    <th class="px-4 py-2 text-left text-gray-700 font-medium">Product Type</th>
+                    <th class="px-4 py-2 text-left text-gray-700 font-medium">Actions</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($datas as $data)
+                    <tr class="border-t">
+                        <td class="border px-4 py-2 text-gray-700">{{ $data->id }}</td>
+                        <td class="border px-4 py-2 text-gray-700">{{ $data->penyedia_barang }}</td>
+                        <td class="border px-4 py-2 text-gray-700">{{ $data->alamat }}</td>
+                        <td class="border px-4 py-2 text-gray-700">{{ $data->product_name }}</td>
+                        <td class="border px-4 py-2 text-gray-700">{{ $data->product_type }}</td>
+                        <td class="border px-4 py-2">
+                            <!-- Button to redirect to another view passing header ID -->
+                            <a href="{{ route('header.show', $data->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 ease-in-out focus:outline-none">View Details</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endif
 
 </x-app-layout>

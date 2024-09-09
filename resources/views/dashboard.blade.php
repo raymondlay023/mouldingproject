@@ -11,7 +11,14 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
+                <div class="p-6">
+                    <a href="{{ route('header.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        Program Moulding
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+
+
 </x-app-layout>
